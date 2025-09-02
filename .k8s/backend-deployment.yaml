@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-backend
-  namespace: todolist
+  name: ${APP_NAME}
+  namespace: ${APP_NAMESPACE}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: todo-backend
+      app: ${APP_NAME}
   template:
     metadata:
       labels:
-        app: todo-backend
+        app: ${APP_NAME}
     spec:
       containers:
-      - name: todo-backend
-        image: todo-backend:latest
+      - name: ${APP_NAME}
+        image: ${APP_NAME}:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 3000
+        - containerPort: ${APP_PORT}
