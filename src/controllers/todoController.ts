@@ -8,7 +8,7 @@ export interface ToDo {
   completed: boolean;
 }
 
-let todos: ToDo[] = [];
+const todos: ToDo[] = [];
 let nextId = 1;
 
 export function createTodo(req: Request, res: Response, next: NextFunction) {

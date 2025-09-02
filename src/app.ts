@@ -2,7 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import todoRoutes from './routes/todoRoutes.js';
 import swaggerUi from 'swagger-ui-express';
-// @ts-ignore
 import swaggerSpec from './swagger.js';
 
 const app = express();
@@ -19,9 +18,14 @@ app.get('/', (req, res) => {
 app.use('/', todoRoutes);
 
 // Middleware de gestion des erreurs
-import type { Request, Response, NextFunction } from 'express';
+import type { Request, Response } from 'express';
 
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+interface ApiError {
+	status?: number;
+	message?: string;
+}
+
+app.use((err: ApiError, req: Request, res: Response) => {
 	console.error(err);
 	res.status(err.status || 500).json({
 		error: err.message || 'Erreur interne du serveur'
