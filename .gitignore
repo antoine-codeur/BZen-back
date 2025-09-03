@@ -5,3 +5,4 @@ dist/
 *.log
 # TypeScript
 *.tsbuildinfo
+__tests__/
