@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: ${APP_NAME}
-        image: ${APP_NAME}:latest
+        image: ${DOCKERHUB_USERNAME}/${APP_NAME}:${APP_VERSION}
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: ${APP_PORT}
